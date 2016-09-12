@@ -1524,7 +1524,9 @@ bool PrepareTriangle(uint32 dwV0, uint32 dwV1, uint32 dwV2)
 // Returns FALSE if it is clipped
 bool IsTriangleVisible(uint32 dwV0, uint32 dwV1, uint32 dwV2)
 {
-    //return true;  //fix me
+    if(options.bPrintGeometry){
+        return true; // helps include the "backside" of objects when writing triangles to STDOUT
+    }
 
     DEBUGGER_ONLY_IF( (!debuggerEnableTestTris || !debuggerEnableCullFace), {return TRUE;});
     
