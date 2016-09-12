@@ -389,6 +389,7 @@ BOOL InitConfiguration(void)
     ConfigSetDefaultBool(l_ConfigVideoRice, "ForcePolygonOffset", FALSE, "If true, use polygon offset values specified below");
     ConfigSetDefaultFloat(l_ConfigVideoRice, "PolygonOffsetFactor", 0.0f, "Specifies a scale factor that is used to create a variable depth offset for each polygon");
     ConfigSetDefaultFloat(l_ConfigVideoRice, "PolygonOffsetUnits", 0.0f, "Is multiplied by an implementation-specific value to create a constant depth offset");
+    ConfigSetDefaultBool(l_ConfigVideoRice, "PrintGeometry", FALSE, "Write rendered geometry data to standard output.");
     return TRUE;
 }
 
@@ -506,6 +507,7 @@ static void ReadConfiguration(void)
     options.bForcePolygonOffset = ConfigGetParamBool(l_ConfigVideoRice, "ForcePolygonOffset");
     options.polygonOffsetFactor = ConfigGetParamFloat(l_ConfigVideoRice, "PolygonOffsetFactor");
     options.polygonOffsetUnits = ConfigGetParamFloat(l_ConfigVideoRice, "PolygonOffsetUnits");
+    options.bPrintGeometry = ConfigGetParamBool(l_ConfigVideoRice, "PrintGeometry");
 
     CDeviceBuilder::SelectDeviceType((SupportedDeviceType)options.OpenglRenderSetting);
 

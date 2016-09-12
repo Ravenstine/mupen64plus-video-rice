@@ -1491,18 +1491,23 @@ bool PrepareTriangle(uint32 dwV0, uint32 dwV1, uint32 dwV2)
 
     bool textureFlag = (CRender::g_pRender->IsTextureEnabled() || gRSP.ucode == 6 );
 
-    printf("<glTri> %f %f %f %f %f %f %f %f %f\n", 
-        g_vtxTransformed[dwV0].x, 
-        g_vtxTransformed[dwV0].y, 
-        g_vtxTransformed[dwV0].z,
-        g_vtxTransformed[dwV1].x, 
-        g_vtxTransformed[dwV1].y, 
-        g_vtxTransformed[dwV1].z,
-        g_vtxTransformed[dwV2].x, 
-        g_vtxTransformed[dwV2].y, 
-        g_vtxTransformed[dwV2].z
-    );
-
+    if(options.bPrintGeometry){
+        // exports xyz coordinates as well as w value, in alphabetic order
+        printf("<glTri> %f %f %f %f %f %f %f %f %f %f %f %f\n",
+            g_vtxTransformed[dwV0].w,
+            g_vtxTransformed[dwV0].x, 
+            g_vtxTransformed[dwV0].y, 
+            g_vtxTransformed[dwV0].z,
+            g_vtxTransformed[dwV0].w,
+            g_vtxTransformed[dwV1].x, 
+            g_vtxTransformed[dwV1].y, 
+            g_vtxTransformed[dwV1].z,
+            g_vtxTransformed[dwV0].w,
+            g_vtxTransformed[dwV2].x, 
+            g_vtxTransformed[dwV2].y, 
+            g_vtxTransformed[dwV2].z
+        );
+    }
     InitVertex(dwV0, gRSP.numVertices, textureFlag);
     InitVertex(dwV1, gRSP.numVertices+1, textureFlag);
     InitVertex(dwV2, gRSP.numVertices+2, textureFlag);

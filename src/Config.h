@@ -215,6 +215,16 @@ typedef struct {
     float   polygonOffsetFactor;
     float   polygonOffsetUnits;
 
+    // Print Geometry
+    // Outputs the geometry of every frame rendered to standard output.
+    // Currently, only triangles are written, and can be captured by piping
+    // STDIO to a program that looks for lines that start with <glTri> and
+    // contains 12 floats.
+    //
+    // Format: `<glTri> w x y z w x y z w x y z`
+    // Each (w x y z) represents 1 in 3 vertices in a single triangle.
+    BOOL    bPrintGeometry;
+
     HACK_FOR_GAMES  enableHackForGames;
 } GlobalOptions;
 
